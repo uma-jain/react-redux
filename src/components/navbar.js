@@ -3,10 +3,10 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 
 const Navbar = props => {
   return (
-    <nav className="nav-wrapper red darken-3">
+    <nav className="nav-wrapper blue darken-0">
       <div className="container">
-        <Link className="brand-logo" to="/">
-          Poke' Times
+        <Link className="brand-logo left " to="/">
+          Uma Jain
         </Link>
         <ul className="right">
           <li>
