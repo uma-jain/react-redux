@@ -1,28 +1,27 @@
-import React from "react";
-import "./styles.css";
-import { connect } from "react-redux";
+import React, { Component } from "react";
+import Navbar from "./components/navbar";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+import Home from "./components/home";
+import About from "./components/about";
+import Contact from "./components/contact";
+import Post from "./components/post";
 
-class App extends React.Component {
+class App extends Component {
   render() {
-    const posts = this.props.posts;
-    const postslist = posts.map(post => {
-      return (
-        <div className="post">
-          <h4 className="center">{post.title}</h4>
-          <p>{post.body}</p>
-        </div>
-      );
-    });
     return (
-      <div className="container-home">
-        <h4 className="center"> Home</h4>
-        {postslist}
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/:post_id" component={Post} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
-function mapStateToProps({ posts }) {
-  return { posts };
-}
 
-export default connect(mapStateToProps)(App);
+export default App;
