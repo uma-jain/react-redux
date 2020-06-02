@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deletepost } from "../actions/actioncreator";
+import * as actions from "../actions/actioncreator";
 
 class Post extends Component {
   handleClick = () => {
-    this.props.deletePost(this.props.post.id);
+    this.props.deletepost(this.props.post.id);
     this.props.history.push("/");
   };
   render() {
@@ -32,13 +32,8 @@ const mapStateToProps = ({ posts }, ownProps) => {
     post: posts.find(post => post.id === id)
   };
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    deletePost: id => dispatch(deletepost(id))
-  };
-};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(Post);
